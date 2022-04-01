@@ -1,4 +1,5 @@
-import tkinter as tk
+from math import gcd
+# from functools import reduce
 
 def compute_factors(num):
     factors = []
@@ -68,7 +69,7 @@ def compute_hcf(x, y, z=None):
 
 while True:
     try:
-        mtype = input("HCF, LCM, p/c or factors: ")
+        mtype = input("HCF, LCM, p/c, gcf/d or factors: ")
         mtype = mtype.lower()
         if mtype == "hcf":
             sntype = input("2 or 3 numbers: ")
@@ -94,6 +95,13 @@ while True:
         elif mtype == "factors":
             snum = input("Number: ")
             print(*compute_factors(int(snum)), sep=", ")
+        elif mtype == ("gcf/d" or "gcf" or "gcd"):
+            gcdlist = []
+            gcdstring = input("x, y...: ")
+            gcdlist = gcdstring.split(", ")
+            gcdlist = list(map(int, gcdlist))            
+            # print(reduce(gcd, gcdlist))
+            print(gcd(*gcdlist))
         elif mtype == "exit":
             print("Exiting...")
             break
